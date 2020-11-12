@@ -29,5 +29,30 @@ function addEdge(origin, destination){
 airports.forEach(addNode);
 routes.forEach(route => addEdge(...route));
 
-console.log(adjacencyList);
+// BFS Breadth First Search
+
+function bfs(start){
+	const visited = new Set();
+
+	const queue = [start]
+	
+	while (queue.length > 0){
+		const airport = queue.shift(); // mustates the queue
+		const destinations = adjacencyList.get(airport);
+		
+		for(const destination of destinations){
+
+			if(destination === 'BKK'){
+				console.log('found it!');
+			}
+			
+			if(visited.has(destination)){
+				vistied.add(destination);
+				queue.push(destination);
+			}
+		}
+	}
+}
+
+bfs('PHX');
 
